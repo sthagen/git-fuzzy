@@ -73,6 +73,10 @@ Simply install and run `git fuzzy` and you can begin using the menu.
 
     Look for entries in `git reflog`. Typing in the search simply filters in the usual `fzf` style.
 
+- `git fuzzy stash` (or `git fuzzy` -> `stash`)
+
+    Look for entries in `git stash`. Typing in the search simply filters in the usual `fzf` style.
+
 - `git fuzzy diff` (or `git fuzzy` -> `diff`)
 
     Interactively select diff subjects. Drilling down enables searching through diff contents in a diff browser.
@@ -169,6 +173,12 @@ export GF_HORIZONTAL_PREVIEW_PERCENT_CALCULATION='max(50, min(80, 100 - (7000 / 
 
 # use __HEIGHT__ for horizontal scenarios
 export GF_VERTICAL_PREVIEW_PERCENT_CALCULATION='max(50, min(80, 100 - (5000 / __HEIGHT__)))'
+```
+
+You may want to customize the default keyboard shortcuts. There are [many configuration options available](https://github.com/bigH/git-fuzzy/pull/16/files). Here's an example:
+
+```bash
+export GIT_FUZZY_STATUS_ADD_KEY='Ctrl-A'
 ```
 
 ## Backups
