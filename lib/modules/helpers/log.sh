@@ -11,14 +11,14 @@ gf_helper_log_diff_query() {
   echo "$1" | rev | cut -d'|' -f1 | rev
 }
 
+# TODO faithfully pass `log` params to `log_menu_contents` (e.g. branch name)
 gf_helper_log_menu_content() {
+  QUERY="$(git fuzzy helper log_log_query "$1")"
+  shift
   if [ -n "$1" ]; then
-    QUERY="$(git fuzzy helper log_log_query "$1")"
-    shift
     # shellcheck disable=2086
     gf_git_command_with_header_hidden_parameters 2 "$GF_LOG_MENU_PARAMS" log "$@" $QUERY
   else
-    shift
     gf_git_command_with_header_hidden_parameters 2 "$GF_LOG_MENU_PARAMS" log "$@"
   fi
 }
