@@ -29,12 +29,37 @@ git clone https://github.com/bigH/git-fuzzy.git
 echo "export PATH=\"$(pwd)/git-fuzzy/bin:\$PATH\"" >> ~/.bashrc
 ```
 
-### ZSH
+### Zsh
 ```bash
 git clone https://github.com/bigH/git-fuzzy.git
 
 # add the executable to your path
 echo "export PATH=\"$(pwd)/git-fuzzy/bin:\$PATH\"" >> ~/.zshrc
+```
+
+Alternatively, you can use a plugin manager:
+
+#### Antibody
+Update your `.zshrc` file with the following line:
+```
+antibody bundle bigH/git-fuzzy path:bin kind:path
+```
+
+#### Znap
+Run the following on the command line:
+```
+znap install bigH/git-fuzzy
+```
+
+#### zplug
+```
+zplug "bigH/git-fuzzy", as:command, use:"bin/git-fuzzy"
+```
+
+#### zinit
+```
+zinit ice as"program" pick"bin/git-fuzzy"
+zinit light bigH/git-fuzzy
 ```
 
 ### Fish
@@ -43,17 +68,6 @@ git clone https://github.com/bigH/git-fuzzy.git
 
 # add the executable to your path
 echo "set -x PATH (pwd)\"/git-fuzzy/bin:\$PATH\"" >> ~/.config/fish/config.fish
-```
-
-### Antibody
-Update your `.zshrc` file with the following line:
-```
-antibody bundle bigH/git-fuzzy path:bin kind:path
-```
-
-### zplug
-```
-zplug "bigH/git-fuzzy", as:command, use:"bin/git-fuzzy"
 ```
 
 ## Usage
@@ -184,6 +198,12 @@ You may want to customize the default keyboard shortcuts. There are [many config
 
 ```bash
 export GIT_FUZZY_STATUS_ADD_KEY='Ctrl-A'
+```
+
+If you are using nano as your default editor, you need to pass `/dev/tty` as stdin otherwise you may receive an error similar to `Too many errors from stdintor to close the file...`:
+
+```bash
+git config --global core.editor 'nano < /dev/tty'
 ```
 
 ## Backups

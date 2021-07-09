@@ -12,8 +12,8 @@ Type to filter. '"${WHITE}Enter${NORMAL} to ${GREEN}ACCEPT${NORMAL}"'
 
   '"${GRAY}-- (${NORMAL}*${GRAY}) editor: ${MAGENTA}${EDITOR} ${NORMAL}${GF_EDITOR_ARGS}${NORMAL}"'
   '"                                      * ${GREEN}${BOLD}edit ✎${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_EDIT_KEY${NORMAL}"'
-   '"${GREEN}all ☑${NORMAL}  ${WHITE}Alt-A${NORMAL}     ${GREEN}stage ${BOLD}⇡${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_ADD_KEY${NORMAL}     ${RED}${BOLD}discard ✗${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_DISCARD_KEY${NORMAL}"'
-  '"${GREEN}none ☐${NORMAL}  ${WHITE}Alt-D${NORMAL}     ${GREEN}reset ${RED}${BOLD}⇣${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_RESET_KEY${NORMAL}    * ${RED}${BOLD}commit ${NORMAL}${RED}⇧${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_COMMIT_KEY${NORMAL}"'
+   '"${GREEN}all ☑${NORMAL}  ${WHITE}${GIT_FUZZY_SELECT_ALL_KEY}${NORMAL}     ${GREEN}stage ${BOLD}⇡${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_ADD_KEY${NORMAL}     ${RED}${BOLD}discard ✗${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_DISCARD_KEY${NORMAL}"'
+  '"${GREEN}none ☐${NORMAL}  ${WHITE}${GIT_FUZZY_SELECT_NONE_KEY}${NORMAL}     ${GREEN}reset ${RED}${BOLD}⇣${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_RESET_KEY${NORMAL}    * ${RED}${BOLD}commit ${NORMAL}${RED}⇧${NORMAL}  ${WHITE}$GIT_FUZZY_STATUS_COMMIT_KEY${NORMAL}"'
 
 '
 
@@ -28,7 +28,7 @@ gf_fzf_status() {
             --preview 'git fuzzy helper status_preview_content {1} {2..}' \
             --bind "$(lowercase "$GIT_FUZZY_STATUS_ADD_KEY"):execute-silent(git fuzzy helper status_add {+2..})+down+$RELOAD" \
             --bind "$(lowercase "$GIT_FUZZY_STATUS_RESET_KEY"):execute-silent(git fuzzy helper status_reset {+2..})+down+$RELOAD" \
-            --bind "$(lowercase "$GIT_FUZZY_STATUS_DISCARD_KEY"):execute-silent(git fuzzy helper status_discard {2..})+$RELOAD"
+            --bind "$(lowercase "$GIT_FUZZY_STATUS_DISCARD_KEY"):execute-silent(git fuzzy helper status_discard {+2..})+$RELOAD"
 }
 
 gf_status_interpreter() {
